@@ -1,0 +1,20 @@
+I0128 17:44:28.545909 19160 datasets.py:9] Preparing dataset HAPT...
+Traceback (most recent call last):
+  File "D:\HAR\pythonProject\main.py", line 56, in <module>
+    app.run(main)
+  File "D:\miniconda\envs\jndata\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\miniconda\envs\jndata\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "D:\HAR\pythonProject\main.py", line 50, in main
+    evaluate(model,
+  File "D:\HAR\pythonProject\evaluation\eval.py", line 32, in evaluate
+    for sample in ds_test.take(1):
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\data\ops\iterator_ops.py", line 766, in __next__
+    return self._next_internal()
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\data\ops\iterator_ops.py", line 749, in _next_internal
+    ret = gen_dataset_ops.iterator_get_next(
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\ops\gen_dataset_ops.py", line 3011, in iterator_get_next
+    _result = pywrap_tfe.TFE_Py_FastPathExecute(
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd5 in position 211: invalid continuation byte
+Restored from D:\HAR\experiments\run_2024-01-28T06-49-20-054841\ckpts\ckpt-108

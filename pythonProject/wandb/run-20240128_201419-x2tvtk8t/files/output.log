@@ -1,0 +1,92 @@
+
+I0128 20:14:21.957952 21900 datasets.py:9] Preparing dataset HAPT...
+Restored from D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts\ckpt-36
+Training step 1
+Training step 2
+Training step 3
+Training step 4
+Training step 5
+Training step 6
+Training step 7
+Training step 8
+Training step 9
+I0128 20:14:25.231791 21900 train.py:117] Step 10, Loss: 0.7183669805526733, Accuracy: 79.375, Validation Loss: 0.8494874835014343, Validation Accuracy: 68.78173065185547
+I0128 20:14:25.235791 21900 train.py:142] Saving checkpoint to D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts.
+Training step 10
+Step 10, Loss: 0.7184, Accuracy: 79.38%, Validation Loss: 0.8495, Validation Accuracy: 68.78%
+Training step 11
+Training step 12
+Training step 13
+Training step 14
+Training step 15
+Training step 16
+Training step 17
+Training step 18
+Training step 19
+I0128 20:14:26.492903 21900 train.py:117] Step 20, Loss: 0.8966655731201172, Accuracy: 74.375, Validation Loss: 0.7771619558334351, Validation Accuracy: 65.22842407226562
+I0128 20:14:26.495903 21900 train.py:142] Saving checkpoint to D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts.
+I0128 20:14:27.648015 21900 train.py:117] Step 30, Loss: 0.8834438323974609, Accuracy: 66.5625, Validation Loss: 0.7022737860679626, Validation Accuracy: 70.43147277832031
+I0128 20:14:27.651015 21900 train.py:142] Saving checkpoint to D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts.
+Training step 20
+Step 20, Loss: 0.8967, Accuracy: 74.38%, Validation Loss: 0.7772, Validation Accuracy: 65.23%
+Training step 21
+Training step 22
+Training step 23
+Training step 24
+Training step 25
+Training step 26
+Training step 27
+Training step 28
+Training step 29
+Training step 30
+Step 30, Loss: 0.8834, Accuracy: 66.56%, Validation Loss: 0.7023, Validation Accuracy: 70.43%
+Training step 31
+Training step 32
+Training step 33
+Training step 34
+I0128 20:14:28.782619 21900 train.py:117] Step 40, Loss: 0.8272165060043335, Accuracy: 71.25, Validation Loss: 0.6741445660591125, Validation Accuracy: 77.91877746582031
+I0128 20:14:28.786619 21900 train.py:142] Saving checkpoint to D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts.
+Training step 35
+Training step 36
+Training step 37
+Training step 38
+Training step 39
+Training step 40
+Step 40, Loss: 0.8272, Accuracy: 71.25%, Validation Loss: 0.6741, Validation Accuracy: 77.92%
+Training step 41
+Training step 42
+Training step 43
+Training step 44
+Training step 45
+Training step 46
+Training step 47
+Training step 48
+Training step 49
+Training step 50
+I0128 20:14:29.944730 21900 train.py:117] Step 50, Loss: 0.9260454177856445, Accuracy: 65.9375, Validation Loss: 0.6291578412055969, Validation Accuracy: 78.04568481445312
+I0128 20:14:29.948730 21900 train.py:142] Saving checkpoint to D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts.
+I0128 20:14:29.985730 21900 train.py:149] Finished training after 50 steps.
+Traceback (most recent call last):
+  File "D:\HAR\pythonProject\main.py", line 54, in <module>
+    app.run(main)
+  File "D:\miniconda\envs\jndata\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\miniconda\envs\jndata\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "D:\HAR\pythonProject\main.py", line 48, in main
+    evaluate(model,
+  File "D:\HAR\pythonProject\evaluation\eval.py", line 39, in evaluate
+    for test_images, test_labels in ds_test:
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\data\ops\iterator_ops.py", line 766, in __next__
+    return self._next_internal()
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\data\ops\iterator_ops.py", line 749, in _next_internal
+    ret = gen_dataset_ops.iterator_get_next(
+  File "D:\miniconda\envs\jndata\lib\site-packages\tensorflow\python\ops\gen_dataset_ops.py", line 3011, in iterator_get_next
+    _result = pywrap_tfe.TFE_Py_FastPathExecute(
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd5 in position 211: invalid continuation byte
+Step 50, Loss: 0.9260, Accuracy: 65.94%, Validation Loss: 0.6292, Validation Accuracy: 78.05%
+starting eval***************************************
+Restored from D:\HAR\experiments\run_2024-01-28T19-28-59-232815\ckpts\ckpt-42
+111
+222
+333

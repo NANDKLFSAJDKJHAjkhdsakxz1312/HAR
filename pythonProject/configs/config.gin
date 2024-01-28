@@ -1,0 +1,16 @@
+# Training
+train.Trainer.total_steps =50
+train.Trainer.log_interval = 10
+train.Trainer.ckpt_interval = 10
+
+# input_pipeline
+load.name = 'HAPT'
+load.data_dir = r'D:\HAR\pythonProject\input_pipeline'
+prepare.batch_size = 32
+prepare.caching = False
+
+# model
+create_crnn_model.filter_units = 64
+create_crnn_model.lstm_units = 64
+create_crnn_model.dense_units = 64
+create_crnn_model.dropout_rate = 0.5
