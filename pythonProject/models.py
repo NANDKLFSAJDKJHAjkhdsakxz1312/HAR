@@ -1,30 +1,41 @@
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv1D, MaxPooling1D, LSTM, Dense, Dropout
 import gin
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+from tensorflow.keras.optimizers import Adam
 
 @gin.configurable
-def create_crnn_model(input_shape, num_classes, filter_units=64, lstm_units=64, dense_units=128, dropout_rate=0.5):
+def lstm_model(num_recurrent_layers, num_fc_layers, num_hidden_units, dropout_rate, learning_rate,
+               stateful, input_shape, num_classes, batch_size=None):
     model = Sequential()
 
-    # 添加一维卷积层，用于捕捉局部特征
-    model.add(Conv1D(filter_units, kernel_size=3, activation='relu', input_shape=input_shape))
-    model.add(MaxPooling1D(pool_size=2))
+    for i in range(num_recurrent_layers):
+        return_sequences = True if i < num_recurrent_layers - 1 else False
 
-    # 添加LSTM层，用于捕捉长期依赖关系
-    model.add(LSTM(lstm_units, return_sequences=False))
+        if stateful:
+            assert batch_size is not None, "batch_size must be specified for stateful LSTM"
+            batch_input_shape = (batch_size,) + input_shape
+            model.add(LSTM(num_hidden_units, return_sequences=return_sequences, stateful=stateful,
+                           batch_input_shape=batch_input_shape))
+        else:
+            # 在非状态保持模式下使用原始的input_shape
+            model.add(LSTM(num_hidden_units, return_sequences=return_sequences, input_shape=input_shape))
 
-    # 添加全连接层
-    model.add(Dense(dense_units, activation='relu'))
-    model.add(Dropout(dropout_rate))  # 随机丢弃，防止过拟合
+        model.add(Dropout(dropout_rate))
 
-    # 输出层，适用于分类任务
+    for _ in range(num_fc_layers):
+        model.add(Dense(num_hidden_units, activation='relu'))
+        model.add(Dropout(dropout_rate))
+
     model.add(Dense(num_classes, activation='softmax'))
+
+    optimizer = Adam(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     return model
 
 
-# 使用示例
-input_shape = (250, 6)  # 根据您的输入数据形状调整
-num_classes = 12  # 根据您的任务中的类别数量调整
 
-model = create_crnn_model(input_shape, num_classes)
+
+
+

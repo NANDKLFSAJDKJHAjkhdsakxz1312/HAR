@@ -28,7 +28,7 @@ def load(name, data_dir):
             filenames=[os.path.join(data_dir, "Validation.tfrecords")]
         ).map(parse_tfrecord_fn)
         ds_test = tf.data.TFRecordDataset(
-            filenames=[os.path.join(data_dir, "Test.tfrecord")]
+            filenames=[os.path.join(data_dir, "Test.tfrecords")]
         ).map(parse_tfrecord_fn)
 
         # ...
@@ -43,18 +43,18 @@ def prepare(ds_train, ds_val, ds_test,  batch_size, caching):
     if caching:
         ds_train = ds_train.cache()
     ds_train = ds_train.shuffle(10000 // 10)
-    ds_train = ds_train.batch(batch_size)
+    ds_train = ds_train.batch(batch_size, drop_remainder=True)
     ds_train = ds_train.repeat(-1)
     ds_train = ds_train.prefetch(tf.data.experimental.AUTOTUNE)
 
     # Prepare validation dataset
-    ds_val = ds_val.batch(batch_size)
+    ds_val = ds_val.batch(batch_size, drop_remainder=True)
     if caching:
         ds_val = ds_val.cache()
     ds_val = ds_val.prefetch(tf.data.experimental.AUTOTUNE)
 
     # Prepare test dataset
-    ds_test = ds_test.batch(batch_size)
+    ds_test = ds_test.batch(batch_size, drop_remainder=True)
     if caching:
         ds_test = ds_test.cache()
     ds_test = ds_test.prefetch(tf.data.experimental.AUTOTUNE)
