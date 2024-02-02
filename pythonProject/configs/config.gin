@@ -1,14 +1,14 @@
 # Training
-train.Trainer.total_steps =5000
-train.Trainer.log_interval = 1000
-train.Trainer.ckpt_interval = 1000
+train.Trainer.total_steps =50
+train.Trainer.log_interval = 10
+train.Trainer.ckpt_interval = 10
 
 # input_pipeline
 load.name = 'HAPT'
-load.data_dir = r'/home/RUS_CIP/st181029/new_lstm/input_pipeline'
+load.data_dir = r'D:\HAR\pythonProject\input_pipeline'
 prepare.batch_size = 32
 prepare.caching = True
-preprocessor.file_path = r'/home/data/HAPT_dataset/RawData'
+preprocessor.file_path = r'D:\HAR\HAPT_Data_Set\RawData'
 preprocessor.window_size = 250
 preprocessor.window_step = 125
 

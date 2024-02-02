@@ -17,10 +17,12 @@ wandb.login(key=api_key)
 project_name = "human_activity_recognition"
 wandb.init(project=project_name)
 print('jj')
+run_paths = None
 
 def main(argv):
 
     # generate folder structures
+    global run_paths
     run_paths = utils_params.gen_run_folder()
     print(run_paths)
 
@@ -31,7 +33,7 @@ def main(argv):
     gin.parse_config_files_and_bindings(['configs/config.gin'], [])
     utils_params.save_config(run_paths['path_gin'], gin.config_str())
 
-    preprocessor()
+    _ = preprocessor()
 
     # setup pipeline
     ds_train, ds_val, ds_test = datasets.load()
@@ -39,7 +41,7 @@ def main(argv):
     # model
     batch_size = gin.query_parameter('prepare.batch_size')
     model = lstm_model(input_shape=(250, 6), num_classes=12,batch_size=batch_size )
-
+    model.summary()
 
 
     if FLAGS.train:

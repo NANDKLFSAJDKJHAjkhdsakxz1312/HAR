@@ -29,8 +29,7 @@ def lstm_model(num_recurrent_layers, num_fc_layers, num_hidden_units, dropout_ra
 
     model.add(Dense(num_classes, activation='softmax'))
 
-    optimizer = Adam(learning_rate=learning_rate)
-    model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
 
     return model
 

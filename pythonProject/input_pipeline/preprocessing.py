@@ -117,34 +117,7 @@ def preprocessor(file_path,window_size,window_step):
 
 
 
-    '''import random
-    
-    # 从每个数据集中随机选择一些窗口并打印其相关信息
-    for dataset_name, windows_with_labels in labeled_windows.items():
-        print(f"数据集: {dataset_name}")
-        sample_windows = random.sample(windows_with_labels, 5)  # 随机选择5个窗口
-    
-        for i, (window_data, label, experiment_number, user_number) in enumerate(sample_windows, 1):
-            window_start = window_data.index[0]
-            window_end = window_data.index[-1]
-    
-            # 查找与窗口对应的标签起止点
-            label_row = labels_df[(labels_df['Experiment'] == experiment_number) &
-                                  (labels_df['User'] == user_number) &
-                                  (labels_df['Start'] <= window_end) &
-                                  (labels_df['End'] >= window_start)]
-            if not label_row.empty:
-                label_start = label_row['Start'].iloc[0]
-                label_end = label_row['End'].iloc[0]
-    
-                print(f"窗口 {i} (试验: {experiment_number}, 用户: {user_number}):")
-                print(f"窗口起点: {window_start}, 终点: {window_end}")
-                print(f"标签起点: {label_start}, 终点: {label_end}")
-                print(f"标签: {label}\n")
-            else:
-                print(f"窗口 {i} (试验: {experiment_number}, 用户: {user_number}) 没有找到对应的标签\n")
-    
-        print("-" * 30)  # 分隔符'''
+
 
 
 
@@ -193,7 +166,7 @@ def preprocessor(file_path,window_size,window_step):
                 example = serialize_example(window_data, label)
                 writer.write(example)
 
-    return
+    return labeled_windows,windowed_datasets
 
 '''import matplotlib.pyplot as plt
 import random
@@ -238,22 +211,5 @@ def visualize_random_windows(labeled_windows, num_samples=3):
             plot_window_data(window_data, label, experiment_number, user_number)
 
 # 对每个数据集进行可视化
-# visualize_random_windows(labeled_windows)
-from collections import Counter
+# visualize_random_windows(labeled_windows)'''
 
-# 初始化一个空的字典来存储每个数据集的标签计数
-label_counts = {'Test': Counter(), 'Train': Counter(), 'Validation': Counter()}
-
-# 遍历每个数据集和对应的窗口
-for dataset_name, windows in labeled_windows.items():
-    # 提取该数据集的所有标签
-    labels = [label for _, label, _, _ in windows]
-    # 统计每个标签的出现次数
-    label_counts[dataset_name] = Counter(labels)
-
-# 打印每个数据集的标签计数
-for dataset_name, counts in label_counts.items():
-    print(f"数据集 {dataset_name} 的标签计数:")
-    for label, count in counts.items():
-        print(f"标签 {label}: {count}次")
-    print("-" * 30)  # 分隔符'''
