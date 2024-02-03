@@ -160,7 +160,7 @@ def preprocessor(file_path,window_size,window_step):
 
     for dataset_name, dataset in tensor_datasets.items():
         # 相对路径
-        tfrecord_file_path = os.path.join('input_pipeline', f'{dataset_name}.tfrecords')
+        tfrecord_file_path = os.path.join('input_pipeline_s2l', f'{dataset_name}.tfrecords')
         with tf.io.TFRecordWriter(tfrecord_file_path) as writer:
             for window_data, label in dataset:
                 example = serialize_example(window_data, label)

@@ -2,10 +2,10 @@ import gin
 import logging
 from absl import app, flags
 from train import Trainer
-from input_pipeline import datasets
+from input_pipeline_s2l import datasets
 from utils import utils_params, utils_misc
-from models import lstm_model
-from input_pipeline.preprocessing import preprocessor
+from pythonProject.architectures.models_rcnn import create_crnn_model
+from input_pipeline_s2l.preprocessing import preprocessor
 from eval import evaluate
 
 FLAGS = flags.FLAGS
@@ -23,7 +23,7 @@ def main(argv):
 
     # generate folder structures
     global run_paths
-    run_paths = utils_params.gen_run_folder()
+    run_paths = utils_params.gen_run_folder('rcnn')
     print(run_paths)
 
     # set loggers
@@ -40,7 +40,8 @@ def main(argv):
 
     # model
     batch_size = gin.query_parameter('prepare.batch_size')
-    model = lstm_model(input_shape=(250, 6), num_classes=12,batch_size=batch_size )
+    model = create_crnn_model((250,6),12)
+    #model = lstm_model(input_shape=(250, 6), num_classes=12,batch_size=batch_size )
     model.summary()
 
 

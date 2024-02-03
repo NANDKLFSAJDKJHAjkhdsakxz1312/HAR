@@ -1,23 +1,18 @@
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-from input_pipeline.preprocessing import preprocessor
-from models import lstm_model
+from input_pipeline_s2l.preprocessing import preprocessor
+from pythonProject.architectures.models import lstm_model
 import gin
-from input_pipeline.datasets import load
+from input_pipeline_s2l.datasets import load
 import tensorflow as tf
-import main
 from utils import utils_params
 
 import matplotlib
-import matplotlib.pyplot as plt
 
 # 设置 matplotlib 以支持中文
 matplotlib.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体为黑体
 matplotlib.rcParams['axes.unicode_minus'] = False    # 解决负号'-'显示为方块的问题
 
 
-run_paths = {'path_model_id': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781', 'path_logs_train': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781\\logs\\run.log', 'path_ckpts_train': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781\\ckpts', 'path_gin': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781\\config_operative.gin'}
+run_paths = {'path_model_id': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781', 'path_logs_train': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781\\logs\\run.log', 'path_ckpts_train': 'D:\HAR\pythonProject\ppp', 'path_gin': 'D:\\HAR\\experiments\\run_2024-01-31T22-29-46-927781\\config_operative.gin'}
 
 # gin-config
 gin.parse_config_files_and_bindings(['configs/config.gin'], [])

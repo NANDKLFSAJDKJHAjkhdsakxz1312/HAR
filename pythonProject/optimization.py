@@ -1,11 +1,10 @@
 import logging
 import wandb
 import gin
-import math
 from train import Trainer
-from input_pipeline.datasets import load
-from input_pipeline.preprocessing import preprocessor
-from models import lstm_model
+from input_pipeline_s2l.datasets import load
+from input_pipeline_s2l.preprocessing import preprocessor
+from pythonProject.architectures.models import lstm_model
 from utils import utils_params, utils_misc
 
 
